@@ -1,0 +1,27 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="detalles">
+        <h1>{{detalle.Nombre}} {{detalle.Apellido}}</h1>
+
+        <div class="img-alu">
+            <img src="{{detalle.imagen.url}}" alt="">
+        </div>
+        
+        <h3>Datos Personales:</h3>
+        <ul>
+            
+            <li>{{detalle.Correo}}</li>
+            <li>{{detalle.Telefono}}</li>
+        </ul>
+    
+    </div>
+    <a href="{% url 'inicio' %}" class="btn-flotante">Volver</a>
+</body>
+</html>

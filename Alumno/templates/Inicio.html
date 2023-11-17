@@ -1,0 +1,53 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1 class="title">ALUMNOS</h1>
+
+    
+
+    <form action="" method="post" class="buscador">
+        {% csrf_token %}
+        <input type="search" name="query" placeholder="Buscar Alumno">
+    </form>
+    <a href="{% url 'agregar' %}" class="agregar">+ Alumno</a>
+    <table class="table">
+        <thead>
+            
+            <tr class="titulos">
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+           {% for aln in Alumnos %}
+            <tr>
+                <td>
+                    <div class="img">
+                        <img src="{{aln.imagen.url}}" alt="">
+                    </div>
+                </td>
+                <td>{{ aln.Nombre }}</td>
+                <td>{{ aln.Apellido }}</td>
+                <td>{{ aln.Correo }}</td>
+                <td>{{ aln.Telefono }}</td>
+                <td>
+                    <a href="{% url 'editar' id=aln.id %}" class="btn edit">Editar</a>
+                    <a href="{% url 'borrar' id=aln.id %}" class="btn delete">Eliminar</a>
+                    <a href="{% url 'detalle' id=aln.id %}" class="btn details">Detalles</a>
+                </td>
+            </tr>
+           {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>{{alumno.Nombre}} {{alumno.Apellido}}</h1>
+    <div class="editar">
+        <div class="box-img">
+            <img src="{{alumno.imagen.url}}" alt="">
+        </div>
+
+
+        <form action="" method="post" class="formulario" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{formulario.as_div}}
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+    <a href="{% url 'inicio' %}" class="btn-flotante">Volver</a>
+</body>
+</html>
